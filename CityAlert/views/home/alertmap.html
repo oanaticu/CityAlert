@@ -1,0 +1,13 @@
+﻿<div id="alertMap" class="modal modal-wide fade in" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Harta alerte</h4>
+            </div>
+            <div class="modal-body">
+                <map id="mAlert"  zoom="10" center="[{{newAlert.userLat}},{{newAlert.userLong}}]" class="margin-bottom-20 ca-gmaps" geo-fallback-center="[{{fallbackLat}}, {{fallbackLong}}]" />
+            </div>
+        </div>
+    </div>
+</div>

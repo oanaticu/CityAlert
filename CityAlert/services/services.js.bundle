@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="services.js">
+  <!--The order of the <file> elements determines the order of them when bundled.-->
+  <file>/services/accountservice.js</file>
+  <file>/services/alertservice.js</file>
+  <file>/services/layoutservice.js</file>
+  <file>/services/requestservice.js</file>
+  <file>/services/staticdata.js</file>
+  <file>/services/util.js</file>
+</bundle>

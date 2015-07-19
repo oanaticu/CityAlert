@@ -1,0 +1,22 @@
+﻿<div class="row" ng-controller="AccountController">
+    <div class="col-md-10">
+        <form name="fRecoverPass" novalidate class="form-horizontal" ng-submit="fRecoverPass.$valid && recoverPassword()">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control" placeholder="Email" ng-model="recoverPass.Email" required>
+                    <div ng-show="fRecoverPass.$submitted || fRecoverPass.email.$dirty" class="ca-validation-err">
+                        <div ng-show="fRecoverPass.email.$error.required">Emailul este obligatoriu</div>
+                        <div ng-show="fRecoverPass.email.$error.email">Emailul nu are un format valid</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default ca-btn-submit">Trimite</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>

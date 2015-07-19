@@ -1,0 +1,90 @@
+﻿<form novalidate name="fAddAlert" ng-submit="fAddAlert.$valid && addAlert()">
+    <div class="row ca-newalert-header">
+        <img src="img/site/banner_1.png" alt="" class="img-responsive ca-newalert-header-img" />
+    </div>
+    <div class="row ca-newalert-area">
+        <div class="col-xs-7 col-sm-7 col-md-7">
+            <h3>Fotografia</h3>
+            <p>Adauga o fotografie relevanta pentru problema semnalata</p>
+        </div>
+        <div class="col-xs-5 col-sm-5 col-md-5">
+            <div class="ca-photo-upload" ng-style="uploadPhotoStyle">
+                <input nv-file-select="" uploader="uploader" type="file" accept="image/*" required />
+            </div>
+        </div>
+    </div>
+    <div class="row ca-newalert-area">
+        <div class="col-xs-7 col-sm-7 col-md-7">
+            <h3>Adresa</h3>
+            <p>Pozitioneaza problema pe harta sau completeaza adresa exacta</p>
+        </div>
+        <div class="col-xs-5 col-sm-5 col-md-5">
+            <img class="img-responsive" src="img/location-map-icon.png" alt="" ca-alert-map-popover ng-model="map" />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div ng-show="fAddAlert.$submitted" class="ca-validation-err">
+                <div ng-show="!newAlert.lat || !newAlert.long">Adresa este obligatorie</div>
+            </div>
+        </div>
+        </div>
+    <div class="row ca-newalert-area">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <h3>Categoria</h3>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <p>Alege categoria semnalarii</p>
+            <select ng-model="newAlert.categoryId" convert-to-number style="width: 100%">
+                <option data-ng-repeat="x in categories" value="{{x.Id}}">
+                    {{ x.Name }}
+                </option>
+            </select>
+            <p>Alege subcategoria semnalarii</p>
+            <select ng-model="newAlert.subCategoryId" convert-to-number style="width: 100%">
+                <option data-ng-repeat="x in subcategories" value="{{x.Id}}">
+                    {{ x.Name }}
+                </option>
+            </select>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div ng-show="fAddAlert.$submitted" class="ca-validation-err">
+                <div ng-show="!newAlert.subCategoryId">Subcategoria este obligatorie</div>
+            </div>
+        </div>
+    </div>
+    <div class="row ca-newalert-area">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <h3>Descriere</h3>
+            <p>Descrie situatia semnalata</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <textarea rows="3" class="form-control" style="width: 100%" ng-model="newAlert.description" required></textarea>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div ng-show="fAddAlert.$submitted" class="ca-validation-err">
+                <div ng-show="!newAlert.description">Descrierea este obligatorie</div>
+            </div>
+        </div>
+    </div>
+    <div class="row ca-newalert-area">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <label>
+                <input type="checkbox" ng-model="newAlert.sendFeedback">
+                Doresc feedback
+            </label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <label>
+                <input type="checkbox" ng-model="newAlert.isPublic">
+                Sesizare publica (vizibila altor utilizatori)
+            </label>
+        </div>
+    </div>
+    <div class="ca-info-text">
+        <p>** Toate campurile sunt obligatorii</p>
+        <p>** Cand ai cont si esti utilizator inregistrat, poti primi informatii referitoare la statusul alertelor tale</p>
+    </div>
+    <div class="ca-new-alert-actions text-center">
+        <button type="submit" class="btn ca-btn-submit">Trimite</button>
+    </div>
+</form>
+<ca-new-alert-map></ca-new-alert-map>

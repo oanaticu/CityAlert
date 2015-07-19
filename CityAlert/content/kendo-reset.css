@@ -1,0 +1,8 @@
+﻿.k-autocomplete, 
+.k-combobox, .k-datepicker, 
+.k-timepicker, .k-datetimepicker, 
+.k-colorpicker, .k-numerictextbox, 
+.k-dropdown, .k-selectbox, .k-textbox,
+.k-progressbar-horizontal {
+    width: 100%;
+}

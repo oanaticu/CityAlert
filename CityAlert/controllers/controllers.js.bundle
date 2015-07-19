@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="controllers.js">
+  <!--The order of the <file> elements determines the order of them when bundled.-->
+  <file>/controllers/AboutController.js</file>
+  <file>/controllers/AccountController.js</file>
+  <file>/controllers/ContactController.js</file>
+  <file>/controllers/HomeController.js</file>
+  <file>/controllers/LayoutController.js</file>
+  <!--<file>/controllers/ModalInstanceController.js</file>-->
+</bundle>

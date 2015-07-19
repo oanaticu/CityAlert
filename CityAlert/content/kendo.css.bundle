@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="kendo.css">
+  <!--The order of the <file> elements determines the order of them when bundled.-->
+  <file>/content/kendo/2014.3.1411/kendo.common.min.css</file>
+  <file>/content/kendo/2014.3.1411/kendo.dataviz.min.css</file>
+  <file>/content/kendo/2014.3.1411/kendo.dataviz.metro.min.css</file>
+  <file>/content/kendo/2014.3.1411/kendo.metro.min.css</file>
+</bundle>

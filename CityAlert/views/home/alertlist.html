@@ -1,0 +1,24 @@
+﻿<div class="ca-alert-list">
+    <div ng-repeat="model in alerts | filter:search:strict" ca-alert-list-detail>
+        <div class="row ca-alert-line">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+
+                <img class="img-responsive fancybox-data-img" ng-src="{{model.Image}}" />
+
+
+                <div style='background-color: {{model.Color}}'>{{model.Status}}</div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <p class="ca-alert-title">{{model.Title}}</p>
+                <p class="ca-alert-code">{{model.Code}}</p>
+
+                <p class="ca-alert-desc">{{model.Description}}</p>
+
+                <p class="ca-alert-time">
+                    {{model.LongAgo}}
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

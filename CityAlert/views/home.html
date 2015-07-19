@@ -1,0 +1,67 @@
+﻿
+<div class="row margin-bottom-20" ng-controller="HomeController">
+    <div class="col-md-4">
+        <div class="service-box">
+            <div class="service-box-heading">
+                <span ng-show="!userLoggedIn">Alerte recente</span>
+                <span ng-show="userLoggedIn">Alertele mele</span>
+                <em><i class="fa fa-clock-o black"></i></em>
+            </div>
+            <div class="service-box-filter">
+                <div class="input-icon right">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="form-control" placeholder="Cauta orasul..." ng-model="search.CityName">
+                </div>
+            </div>
+            <div class="service-box-body">
+                <ca-alert-list></ca-alert-list>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 ">
+        <div class="row margin-bottom-10">
+            <div class="service-box">
+                <div class="service-box-heading">
+                    <span>Harta alertelor</span>
+                    <em><i class="fa fa-map-marker black"></i></em>
+                </div>
+                <div class="service-box-body">
+                    <img class="img-responsive ca-alert-map" src="img/map.png" alt="" ca-map-popover>
+                    <ca-alert-map></ca-alert-map>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="service-box">
+                <div class="service-box-heading">
+                    <span>Verificare status</span>
+                    <em><i class="fa fa-cog black"></i></em>
+                </div>
+                <div class="service-box-filter">
+                    <div class="input-icon right">
+                        <i class="fa fa-search"></i>
+                        <input type="text" class="form-control" placeholder="Cauta dupa codul alertei..." ng-model="codeSearch">
+                    </div>
+                </div>
+                <div class="service-box-body ca-alert-details">
+                    <ca-alert-details></ca-alert-details>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4 ">
+        <div class="service-box">
+            <div class="service-box-heading">
+                <span>Alerta noua</span>
+                <em><i class="fa fa-edit black"></i></em>
+            </div>
+            <div class="service-box-body">
+                <ca-new-alert></ca-new-alert>
+            </div>
+        </div>
+
+
+    </div>
+</div>

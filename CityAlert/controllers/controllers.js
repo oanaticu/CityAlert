@@ -236,12 +236,12 @@ angular.module('app')
                 call.then(
                     function (alerts) {
                         alerts.forEach(function (element, index) {
-                            element.Image = util.GetImage(element.Image);//util.GetImage(element.Thumbnail);
+                            element.Image = util.GetImage(element.Image);
 
                             element.Color = element.StatusColor;
                             element.Status = element.StatusName;
 
-                            var date = new Date(element.ModifiedOn);
+                            var date = new Date(element.CreatedOn);
                             element.DateDisplay = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                         });
 

@@ -13,7 +13,7 @@ namespace CityAlertWS.Models
         public int CategId { get; set; }
         public string StatusName { get; set; }
         public string StatusColor { get; set; }
-        //public DateTime? ModifiedOn { get; set; }
+        public DateTime? CreatedOn { get; set; }
         public string LongAgo { get; set; }
         public string Description { get; set; }
 

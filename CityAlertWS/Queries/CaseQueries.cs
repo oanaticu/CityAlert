@@ -51,7 +51,8 @@ namespace CityAlertWS.Queries
                     StatusColor = c.SysStatus.Color,
                     StreetName = c.StreetName,//"Zizin",
                     StreetNo = c.StreetNo, //"5",
-                    Title = c.Title //"Defectiue tehnica"
+                    Title = c.Title, //"Defectiue tehnica",
+                    CreatedOn = c.CreatedOn
 
                 };
 

@@ -34,8 +34,7 @@ namespace CityAlertWS.Controllers
         }
 
         /// multipart request
-        // POST: http://localhost/CitizenshipWS/Case/AddAlert
-        // request body {"ContactId":"49A7DF48-B7D7-E411-B02F-00155D3A7CBC", "CategoryId":"7054716E-45E7-E411-857A-00155D3A7717", "Description":"descr", "City":"Bucuresti sect 3", "StreetName":"rotunda", "StreetNo":"11", "AddressLatitude":"45.010101", "AddressLongitude":"22.34567", "UserLatitude":"1", "UserLongitude":"2", "IsPublic":"true", "SendFeedback":"true" }
+        // POST: http://localhost/CityAlertWS/api/Case/AddAlert
         [ActionName("AddAlert")]
         [HttpPost]
         public async Task<AddAlertResponse> AddAlert()
@@ -65,8 +64,7 @@ namespace CityAlertWS.Controllers
             return response;
         }
 
-        // POST: http://localhost/CitizenshipWS/Case/AddAlertNoPhoto
-        // request body {"ContactId":"49A7DF48-B7D7-E411-B02F-00155D3A7CBC", "CategoryId":"7054716E-45E7-E411-857A-00155D3A7717", "Description":"descr", "City":"Bucuresti sect 3", "StreetName":"rotunda", "StreetNo":"11", "AddressLatitude":"45.010101", "AddressLongitude":"22.34567", "UserLatitude":"1", "UserLongitude":"2", "IsPublic":"true", "SendFeedback":"true" }
+        // POST: http://localhost/CityAlertWS/api/Case/AddAlertNoPhoto
         [ActionName("AddAlertNoPhoto")]
         [HttpPost]
         public async Task<AddAlertResponse> AddAlertNoPhoto(AddAlertContextModel model)

@@ -6,7 +6,7 @@ namespace CityAlertWS.Models
 {
     public class AddAlertContextModel : IMultipartFormModel
     {
-        public int ContactId { get; set; }
+        //public int ContactId { get; set; }
         public int CategoryId { get; set; }
         public Guid Code { get; set; }
         public string Description { get; set; }
@@ -37,11 +37,11 @@ namespace CityAlertWS.Models
         {
             switch(propertyName)
             {
-                case "ContactId":
+               /* case "ContactId":
                     int contactId;
                     if (Int32.TryParse(value, out contactId))
                         ContactId = contactId;
-                    break;
+                    break;*/
                 case "CategoryId": 
                     int categoryId;
                     if (Int32.TryParse(value, out categoryId))
@@ -87,10 +87,10 @@ namespace CityAlertWS.Models
             errorMessage = null;
             StringBuilder sb = new StringBuilder();
 
-            if(ContactId == 0)
+            /*if(ContactId == 0)
             {
                 sb.AppendLine("Id-ul contactului trebuie specificat.");
-            }
+            }*/
             if (CategoryId == 0)
             {
                 sb.AppendLine("Id-ul categorie trebuie specificat.");

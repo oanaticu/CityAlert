@@ -361,8 +361,7 @@ angular.module('app')
 
             // user actions
             $scope.addAlert = function () {
-                if (accountservice.UserLoggedIn()) {
-
+                debugger;
                     var hasAddress = $scope.newAlert.lat
                         && $scope.newAlert.long;
 
@@ -384,7 +383,7 @@ angular.module('app')
                             AddressLatitude: $scope.newAlert.lat,
                             AddressLongitude: $scope.newAlert.long,
                             CategoryId: $scope.newAlert.subCategoryId,
-                            ContactId: accountservice.GetUserData().ContactId,
+                            //ContactId: accountservice.GetUserData().ContactId,
                             Description: $scope.newAlert.description,
                             //IsAddressModified: ($scope.newAlert.isAddressModified) ? 1 : 0,
                             PhotoName: $scope.newAlert.photo.name,
@@ -415,9 +414,7 @@ angular.module('app')
                     }
 
 
-                } else {
-                    toastr.info('Doar utilizatorii logati pot inregistra alerte', 'Info');
-                }
+                
 
             };
             $scope.addressChanged = function () {

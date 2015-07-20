@@ -88,18 +88,6 @@ angular.module('app')
         return (request.then(req.HandleSuccess, req.HandleError));
     };
 
-    function getMyAlerts(id) {
-        var request = $http({
-            method: "get",
-            url: getMyAlertURL+'/'+id,
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-        });
-
-        return (request.then(req.HandleSuccess, req.HandleError));
-    };
-
     function addAlertNoPhoto(data) {
         var request = $http.post(addAlertNoPhotoUrl, data);
 
@@ -110,7 +98,6 @@ angular.module('app')
         AddAlertUrl: addAlertUrl,
         GetCategories: getCategories,
         GetRecentAlerts: getRecentAlerts,
-        GetMyAlerts: getMyAlerts,
         AddAlertNoPhoto: addAlertNoPhoto
     };
 }]);

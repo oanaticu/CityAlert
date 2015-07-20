@@ -240,7 +240,7 @@ angular.module('app')
 
                             element.Color = element.StatusColor;
                             element.Status = element.StatusName;
-
+                            
                             var date = new Date(element.CreatedOn);
                             element.DateDisplay = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                         });

@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityAlert", "CityAlert\CityAlert.csproj", "{6C0A5EDC-0605-44F5-98CD-DDD4F84F5D80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityAlertWS", "CityAlertWS\CityAlertWS.csproj", "{808A7C68-59C0-4BA1-8BC3-540BB6A323AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityAlert.Domain", "CityAlert.Domain\CityAlert.Domain.csproj", "{E7001874-AD39-4D74-9FEA-DB1FAFD607A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{808A7C68-59C0-4BA1-8BC3-540BB6A323AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{808A7C68-59C0-4BA1-8BC3-540BB6A323AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{808A7C68-59C0-4BA1-8BC3-540BB6A323AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7001874-AD39-4D74-9FEA-DB1FAFD607A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7001874-AD39-4D74-9FEA-DB1FAFD607A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7001874-AD39-4D74-9FEA-DB1FAFD607A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7001874-AD39-4D74-9FEA-DB1FAFD607A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

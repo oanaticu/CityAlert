@@ -9,12 +9,13 @@ using CityAlertWS.Queries;
 
 namespace CityAlertWS.Controllers
 {
-    public class CategoryController : ApiController
+    public class DictionaryController : ApiController
     {
         private readonly DictionaryQueries _dicQueries = new DictionaryQueries();
 
-
-        public IEnumerable<Category> Get()
+        [ActionName("GetCategories")]
+        [HttpGet]
+        public IEnumerable<Category> GetCategories()
         {
             List<Category> res = new List<Category>();
 

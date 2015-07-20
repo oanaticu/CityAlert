@@ -8,7 +8,7 @@
     var addAlertNoPhotoUrl = staticdata.ApiUrl + 'Case/AddAlertNoPhoto';
 
 
-    function buildCategoryHierarchy(categoryList) {
+   /* function buildCategoryHierarchy(categoryList) {
         var hierarchy = [];
 
         var parents = _.filter(categoryList, function (elem) { return elem.IsParent; });
@@ -22,7 +22,7 @@
         });
         
         return hierarchy;
-    };
+    };*/
 
     function getCategories() {
         var request = $http({
@@ -33,10 +33,7 @@
             },
         });
 
-        return (request.then(function (response) {
-                return req.HandleSuccess(response, buildCategoryHierarchy);
-            }, 
-        req.HandleError));
+        return (request.then(req.HandleSuccess,req.HandleError));
     };
 
     function getRecentAlerts() {

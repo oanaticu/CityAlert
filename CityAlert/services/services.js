@@ -1,4 +1,4 @@
-///#source 1 1 /services/accountservice.js
+﻿///#source 1 1 /services/accountservice.js
 angular.module('app')
 .factory('accountservice', ['$rootScope','$http', '$q', 'staticdata', 'requestservice', '$cookies', function ($rootScope, $http, $q, staticdata, req, $cookies) {
     var loginUrl = staticdata.ApiUrl + 'Contact/Login';
@@ -65,7 +65,7 @@ angular.module('app')
     var addAlertNoPhotoUrl = staticdata.ApiUrl + 'Case/AddAlertNoPhoto';
 
 
-    function buildCategoryHierarchy(categoryList) {
+   /* function buildCategoryHierarchy(categoryList) {
         var hierarchy = [];
 
         var parents = _.filter(categoryList, function (elem) { return elem.IsParent; });
@@ -79,7 +79,7 @@ angular.module('app')
         });
         
         return hierarchy;
-    };
+    };*/
 
     function getCategories() {
         var request = $http({
@@ -90,10 +90,7 @@ angular.module('app')
             },
         });
 
-        return (request.then(function (response) {
-                return req.HandleSuccess(response, buildCategoryHierarchy);
-            }, 
-        req.HandleError));
+        return (request.then(req.HandleSuccess,req.HandleError));
     };
 
     function getRecentAlerts() {

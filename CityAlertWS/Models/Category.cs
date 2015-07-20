@@ -14,5 +14,12 @@ namespace CityAlertWS.Models
         public int? ParentId { get; set; }
 
         public bool IsParent { get; set; }
+
+        public List<Category> SubCategories { get; set; }
+
+        public Category()
+        {
+            SubCategories = new List<Category>();
+        }
     }
 }

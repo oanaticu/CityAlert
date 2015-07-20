@@ -275,9 +275,9 @@ angular.module('app')
             function loadSubCategories(categoryId) {
                 if (categoryId) {
                     var parent = _.find($scope.categoriesHierarchy, function (elem) { return elem.Id == categoryId; });
-                    $scope.subcategories = parent.children;
-                    if (parent.children[0]) {
-                        $scope.newAlert.subCategoryId = parent.children[0].Id;
+                    $scope.subcategories = parent.SubCategories;
+                    if (parent.SubCategories[0]) {
+                        $scope.newAlert.subCategoryId = parent.SubCategories[0].Id;
                     } else {
                         $scope.newAlert.subCategoryId = undefined;
                     }
@@ -289,6 +289,7 @@ angular.module('app')
                 alertservice.GetCategories()
                     .then(
                         function (categories) {
+                            debugger;
                             if (categories && categories.length > 0) {
                                 $scope.categoriesHierarchy = categories;
 

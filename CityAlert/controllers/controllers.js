@@ -238,8 +238,8 @@ angular.module('app')
                         alerts.forEach(function (element, index) {
                             element.Image = util.GetImage(element.Image);//util.GetImage(element.Thumbnail);
 
-                            element.Color = util.GetStatusBgColor(element.StatusId);
-                            element.Status = util.GetStatusName(element.StatusId);
+                            element.Color = element.StatusColor;
+                            element.Status = element.StatusName;
 
                             var date = new Date(element.ModifiedOn);
                             element.DateDisplay = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();

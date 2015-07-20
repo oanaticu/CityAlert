@@ -5,14 +5,15 @@ using System.Web;
 
 namespace CityAlertWS.Models
 {
-    public class Case
+    public class CaseModel
     {
         public int Id { get; set; }
         public Guid Code { get; set; }
 
         public int CategId { get; set; }
-        public int StatusId { get; set; }
-        public DateTime? ModifiedOn { get; set; }
+        public string StatusName { get; set; }
+        public string StatusColor { get; set; }
+        //public DateTime? ModifiedOn { get; set; }
         public string LongAgo { get; set; }
         public string Description { get; set; }
 

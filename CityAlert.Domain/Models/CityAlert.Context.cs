@@ -25,6 +25,8 @@ namespace CityAlert.Domain.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Case> Cases { get; set; }
         public virtual DbSet<SysCategory> SysCategories { get; set; }
+        public virtual DbSet<SysStatus> SysStatus1 { get; set; }
     }
 }

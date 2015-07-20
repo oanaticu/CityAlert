@@ -173,10 +173,11 @@
     </Compile>
     <Compile Include="Models\AddAlertContextModel.cs" />
     <Compile Include="Models\AddAlertResponse.cs" />
-    <Compile Include="Models\Case.cs" />
+    <Compile Include="Models\CaseModel.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IMultipartFormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\CaseQueries.cs" />
     <Compile Include="Queries\DictionaryQueries.cs" />
   </ItemGroup>
   <ItemGroup>

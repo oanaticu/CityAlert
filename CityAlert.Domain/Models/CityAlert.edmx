@@ -5,6 +5,25 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="CityAlertModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SysCategoryId" Type="int" Nullable="false" />
+          <Property Name="SysStatusId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsPublic" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="500" />
+          <Property Name="StreetNo" Type="nvarchar" MaxLength="500" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Lat" Type="nvarchar" MaxLength="100" />
+          <Property Name="Long" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="SysCategory">
           <Key>
             <PropertyRef Name="SysCategoryId" />
@@ -13,14 +32,77 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ParentCategoryId" Type="int" />
         </EntityType>
+        <EntityType Name="SysStatus">
+          <Key>
+            <PropertyRef Name="SysStatusId" />
+          </Key>
+          <Property Name="SysStatusId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Case_SysCategory">
+          <End Role="SysCategory" Type="Self.SysCategory" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysCategory">
+              <PropertyRef Name="SysCategoryId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="SysCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Case_SysStatus">
+          <End Role="SysStatus" Type="Self.SysStatus" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysStatus">
+              <PropertyRef Name="SysStatusId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="SysStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CityAlertModelStoreContainer">
+          <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysCategory" EntityType="Self.SysCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysStatus" EntityType="Self.SysStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Case_SysCategory" Association="Self.FK_Case_SysCategory">
+            <End Role="SysCategory" EntitySet="SysCategory" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Case_SysStatus" Association="Self.FK_Case_SysStatus">
+            <End Role="SysStatus" EntitySet="SysStatus" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CityAlertModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Guid" Nullable="false" />
+          <Property Name="SysCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="SysStatusId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsPublic" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StreetName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StreetNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Long" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SysCategory" Relationship="Self.FK_Case_SysCategory" FromRole="Case" ToRole="SysCategory" />
+          <NavigationProperty Name="SysStatus" Relationship="Self.FK_Case_SysStatus" FromRole="Case" ToRole="SysStatus" />
+        </EntityType>
         <EntityType Name="SysCategory">
           <Key>
             <PropertyRef Name="SysCategoryId" />
@@ -28,22 +110,95 @@
           <Property Name="SysCategoryId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ParentCategoryId" Type="Int32" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Case_SysCategory" FromRole="SysCategory" ToRole="Case" />
         </EntityType>
-        <EntityContainer Name="CityAlertEntities" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="SysStatus">
+          <Key>
+            <PropertyRef Name="SysStatusId" />
+          </Key>
+          <Property Name="SysStatusId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Case_SysStatus" FromRole="SysStatus" ToRole="Case" />
+        </EntityType>
+        <Association Name="FK_Case_SysCategory">
+          <End Role="SysCategory" Type="Self.SysCategory" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysCategory">
+              <PropertyRef Name="SysCategoryId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="SysCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Case_SysStatus">
+          <End Role="SysStatus" Type="CityAlertModel.SysStatus" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysStatus">
+              <PropertyRef Name="SysStatusId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="SysStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CityAlertContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cases" EntityType="Self.Case" />
           <EntitySet Name="SysCategories" EntityType="Self.SysCategory" />
+          <EntitySet Name="SysStatus1" EntityType="CityAlertModel.SysStatus" />
+          <AssociationSet Name="FK_Case_SysCategory" Association="Self.FK_Case_SysCategory">
+            <End Role="SysCategory" EntitySet="SysCategories" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Case_SysStatus" Association="Self.FK_Case_SysStatus">
+            <End Role="SysStatus" EntitySet="SysStatus1" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CityAlertModelStoreContainer" CdmEntityContainer="CityAlertEntities">
+        <EntityContainerMapping StorageEntityContainer="CityAlertModelStoreContainer" CdmEntityContainer="CityAlertContext">
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="CityAlertModel.Case">
+              <MappingFragment StoreEntitySet="Case">
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="SysCategoryId" ColumnName="SysCategoryId" />
+                <ScalarProperty Name="SysStatusId" ColumnName="SysStatusId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="StreetNo" ColumnName="StreetNo" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SysCategories">
             <EntityTypeMapping TypeName="CityAlertModel.SysCategory">
               <MappingFragment StoreEntitySet="SysCategory">
                 <ScalarProperty Name="SysCategoryId" ColumnName="SysCategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysStatus1">
+            <EntityTypeMapping TypeName="CityAlertModel.SysStatus">
+              <MappingFragment StoreEntitySet="SysStatus">
+                <ScalarProperty Name="SysStatusId" ColumnName="SysStatusId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

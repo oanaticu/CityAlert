@@ -9,43 +9,26 @@ using CityAlertWS.Models;
 using System.Configuration;
 using System.Threading.Tasks;
 using CityAlertWS.Domain.Models;
+using CityAlertWS.Queries;
 
 namespace CityAlertWS.Controllers
 {
     public class CaseController : ApiController
     {
-        public IEnumerable<Case> Get()
+        private readonly CaseQueries _caseQueries = new CaseQueries();
+
+        public IEnumerable<CaseModel> Get()
         {
-            IEnumerable<Case> response = new List<Case>()
+            IEnumerable<CaseModel> response = new List<CaseModel>();
+          
+            try
             {
-                new Case(){
-                    CategId = 1,
-                    Code = Guid.NewGuid(),
-                    CityName = "Bucuresti",
-                    Description = "bla bla",
-                    Id = 1,
-                    Image = ConfigurationManager.AppSettings["AlertImagesPath"].ToString()+"aston-martin-db4.jpg",
-                    IsPublic = true,
-                    Lat = "15",
-                    Long = "22",
-                    LongAgo = "5h",
-                    ModifiedOn = DateTime.Now,
-                    StatusId = 1,
-                    StreetName = "Zizin",
-                    StreetNo = "5",
-                    Title = "Defectiue tehnica"
-
-                }
-            };
-
-            //try
-            //{
-            //    response = caseModule.GetRecentAlert();
-            //}
-            //catch (Exception ex)
-            //{
-            //    ProcessException("GetRecentAlert", ex, null);
-            //}
+                response = _caseQueries.GetAlerts();
+            }
+            catch (Exception ex)
+            {
+                //ProcessException("GetRecentAlert", ex, null);
+            }
 
             return response;
         }

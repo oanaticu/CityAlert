@@ -1,7 +1,7 @@
 USE [CityAlert]
 GO
 
-/****** Object:  Table [dbo].[SysStatus]    Script Date: 7/20/2015 2:18:35 PM ******/
+/****** Object:  Table [dbo].[SysStatus]    Script Date: 7/20/2015 2:53:04 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,6 +11,7 @@ GO
 CREATE TABLE [dbo].[SysStatus](
 	[SysStatusId] [int] NOT NULL,
 	[Name] [nvarchar](250) NOT NULL,
+	[Color] [nvarchar](50) NULL,
  CONSTRAINT [PK_SysStatus] PRIMARY KEY CLUSTERED 
 (
 	[SysStatusId] ASC

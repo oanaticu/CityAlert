@@ -4,8 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4d35818495274115bc95be3420afbb93" Name="Diagram1">
-        <EntityTypeShape EntityType="CityAlertModel.SysCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="82e0c1b0dab64b178780cddfad5e7960" Name="Diagram1">
+        <EntityTypeShape EntityType="CityAlertModel.Case" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CityAlertModel.SysCategory" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CityAlertModel.SysStatus" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CityAlertModel.FK_Case_SysCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CityAlertModel.FK_Case_SysStatus" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

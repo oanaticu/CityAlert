@@ -12,16 +12,16 @@ namespace CityAlert.Domain.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SysCategory
+    public partial class SysStatus
     {
-        public SysCategory()
+        public SysStatus()
         {
             this.Cases = new HashSet<Case>();
         }
     
-        public int SysCategoryId { get; set; }
+        public int SysStatusId { get; set; }
         public string Name { get; set; }
-        public Nullable<int> ParentCategoryId { get; set; }
+        public string Color { get; set; }
     
         public virtual ICollection<Case> Cases { get; set; }
     }

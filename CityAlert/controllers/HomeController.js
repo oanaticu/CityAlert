@@ -192,9 +192,9 @@
                     var parent = _.find($scope.categoriesHierarchy, function (elem) { return elem.Id == categoryId; });
                     $scope.subcategories = parent.SubCategories;
                     if (parent.SubCategories[0]) {
-                        $scope.newAlert.subCategoryId = parent.SubCategories[0].Id;
+                        //$scope.newAlert.subCategoryId = parent.SubCategories[0].Id;
                     } else {
-                        $scope.newAlert.subCategoryId = undefined;
+                        //$scope.newAlert.subCategoryId = undefined;
                     }
                 }
 
@@ -204,12 +204,11 @@
                 alertservice.GetCategories()
                     .then(
                         function (categories) {
-                            debugger;
                             if (categories && categories.length > 0) {
                                 $scope.categoriesHierarchy = categories;
 
                                 $scope.categories = categories;
-                                $scope.newAlert.categoryId = categories[0].Id;
+                                //$scope.newAlert.categoryId = categories[0].Id;
 
                                 loadSubCategories($scope.newAlert.categoryId);
                             }

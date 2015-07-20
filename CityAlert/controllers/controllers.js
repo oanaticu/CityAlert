@@ -1,4 +1,4 @@
-///#source 1 1 /controllers/AboutController.js
+﻿///#source 1 1 /controllers/AboutController.js
 angular.module('app')
     .controller('AboutController', ['$scope', 'layoutservice', function ($scope, layoutservice) {
     
@@ -131,6 +131,7 @@ angular.module('app')
                         position: location,
                         map: map
                     });
+                    setAddress(location);
                     map.setCenter(location);
 
                 });

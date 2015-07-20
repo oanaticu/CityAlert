@@ -46,6 +46,7 @@
                         position: location,
                         map: map
                     });
+                    setAddress(location);
                     map.setCenter(location);
 
                 });

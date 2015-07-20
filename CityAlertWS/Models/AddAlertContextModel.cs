@@ -8,7 +8,6 @@ namespace CityAlertWS.Models
     {
         //public int ContactId { get; set; }
         public int CategoryId { get; set; }
-        public Guid Code { get; set; }
         public string Description { get; set; }
         public string City { get; set; }
         public string StreetNo { get; set; }
@@ -27,11 +26,6 @@ namespace CityAlertWS.Models
         //public byte[] ThumbNail { get; set; }
         public string PhotoName { get; set; }
         //public Guid IncindenceId { get; set; }
-
-        public AddAlertContextModel()
-        {
-            Code = Guid.NewGuid();
-        }
 
         public void SetPropertyValue(string propertyName, string value)
         {

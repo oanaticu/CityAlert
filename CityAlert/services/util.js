@@ -32,11 +32,6 @@
         return result;
     };
 
-    function getImage(text) {
-        if (text == null || text.length == 0)
-            return "img/no-image.jpg";
-        return text;
-    }
 
     function getStatusBgColor(id) {
         var result = "gray";
@@ -71,7 +66,6 @@
 
     return {
         GetStatusName: getStatusName,
-        GetImage: getImage,
         GetStatusBgColor: getStatusBgColor
     };
 

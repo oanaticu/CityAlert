@@ -1,4 +1,4 @@
-﻿///#source 1 1 /services/accountservice.js
+///#source 1 1 /services/accountservice.js
 angular.module('app')
 .factory('accountservice', ['$rootScope','$http', '$q', 'staticdata', 'requestservice', '$cookies', function ($rootScope, $http, $q, staticdata, req, $cookies) {
     var loginUrl = staticdata.ApiUrl + 'Contact/Login';
@@ -210,11 +210,6 @@ angular.module('app')
         return result;
     };
 
-    function getImage(text) {
-        if (text == null || text.length == 0)
-            return "img/no-image.jpg";
-        return text;
-    }
 
     function getStatusBgColor(id) {
         var result = "gray";
@@ -249,7 +244,6 @@ angular.module('app')
 
     return {
         GetStatusName: getStatusName,
-        GetImage: getImage,
         GetStatusBgColor: getStatusBgColor
     };
 

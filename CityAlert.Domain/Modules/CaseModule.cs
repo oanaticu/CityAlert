@@ -33,7 +33,7 @@ namespace CityAlert.Domain.Modules
                     SysCategoryId = model.CategoryId,
                     SysStatusId = (int) SysStatusEnum.Sent,
                     Title = model.Description,
-                    //CreatedOn = DateTime.Now
+                    CreatedOn = DateTime.Now, 
                     Code = Guid.NewGuid()
 
                 };

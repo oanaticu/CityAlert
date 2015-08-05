@@ -153,7 +153,7 @@
                 call.then(
                     function (alerts) {
                         alerts.forEach(function (element, index) {
-                            element.Image = util.GetImage(element.Image);
+                            element.Image = element.Image;
 
                             element.Color = element.StatusColor;
                             element.Status = element.StatusName;

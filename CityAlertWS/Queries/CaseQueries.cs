@@ -41,7 +41,7 @@ namespace CityAlertWS.Queries
                     CityName = c.CityName, //"Bucuresti",
                     Description = c.Description, //"bla bla",
                     Id = c.CaseId, //1,
-                    Image = ConfigurationManager.AppSettings["AlertImagesUrl"].ToString() + c.ImageName,
+                    Image = (string.IsNullOrEmpty(c.ImageName))? "img/no-image.jpg" : ConfigurationManager.AppSettings["AlertImagesUrl"].ToString() + c.ImageName,
                     //"aston-martin-db4.jpg",
                     IsPublic = c.IsPublic, //true,
                     Lat = c.Lat, //"15",

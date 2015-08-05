@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CityAlert.Domain.Models;
-using CityAlertWS.Models;
+using CityAlert.Domain.ViewModels;
 
 namespace CityAlertWS.Queries
 {

@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace CityAlertWS.Models
+namespace CityAlert.Domain.ViewModels
 {
     public class AddAlertResponse
     {
-        public Guid IdAlert { get; set; }
+        public int IdAlert { get; set; }
         public string Error { get; set; }
     }
 }

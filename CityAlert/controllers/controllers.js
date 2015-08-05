@@ -1,4 +1,4 @@
-﻿///#source 1 1 /controllers/AboutController.js
+///#source 1 1 /controllers/AboutController.js
 angular.module('app')
     .controller('AboutController', ['$scope', 'layoutservice', function ($scope, layoutservice) {
     
@@ -123,6 +123,7 @@ angular.module('app')
             // gmaps actions
             $scope.$on('mapInitialized', function (event, map) {
                 $geolocation.getCurrentPosition().then(function (position) {
+                    
                     $scope.newAlert.lat = $scope.newAlert.userLat = position.coords.latitude;
                     $scope.newAlert.long = $scope.newAlert.userLong = position.coords.longitude;
 
@@ -181,7 +182,7 @@ angular.module('app')
             function resetAlert() {
                 $scope.newAlert = {
                     isPublic: false,
-                    sendFeedback: false,
+                    //sendFeedback: false,
                     //isAddressModified: false,
                     photo: {}
                 };
@@ -189,14 +190,15 @@ angular.module('app')
                     'background-image': 'url(img/camera-icon.png)'
                 };
             }
-            function resetAddress() {
+            /*function resetAddress() {
                 $scope.newAlert.street = undefined;
                 $scope.newAlert.streetNo = undefined;
                 $scope.newAlert.city = undefined;
-            }
+            }*/
             function setAddress(latlng) {
-                $scope.newAlert.lat = latlng.A;
-                $scope.newAlert.long = latlng.F;
+                
+                $scope.newAlert.lat = latlng.G;
+                $scope.newAlert.long = latlng.K;
 
                 var geocoder = new google.maps.Geocoder();
 
@@ -219,11 +221,11 @@ angular.module('app')
                             }
                         } else {
                             toastr.error('Nu s-a gasit niciun rezultat!', 'Error');
-                            resetAddress();
+                            //resetAddress();
                         }
                     } else {
                         toastr.error('Nu se poate determina locatia!', 'Error');
-                        resetAddress();
+                        //resetAddress();
                     }
 
                     $scope.$apply();
@@ -336,11 +338,11 @@ angular.module('app')
                 item.formData.push($scope.addAlertData);
             };
             $scope.uploader.onSuccessItem = function (item, response, status, headers) {
-                if (item.Error) {
-                    toastr.error(item.Error, 'Error');
+                if (response.Error) {
+                    toastr.error(response.Error, 'Error');
                 } else {
                     loadAlerts();
-                    resetAlert();
+                    //resetAlert();
                     toastr.success('Alerta a fost inregistrata cu succes', 'Succes');
                 }
 
@@ -361,7 +363,7 @@ angular.module('app')
 
             // user actions
             $scope.addAlert = function () {
-                debugger;
+                
                     var hasAddress = $scope.newAlert.lat
                         && $scope.newAlert.long;
 
@@ -387,8 +389,8 @@ angular.module('app')
                             Description: $scope.newAlert.description,
                             //IsAddressModified: ($scope.newAlert.isAddressModified) ? 1 : 0,
                             PhotoName: $scope.newAlert.photo.name,
-                            IsPublic: ($scope.newAlert.isPublic) ? 1 : 0,
-                            SendFeedback: ($scope.newAlert.sendFeedback) ? 1 : 0,
+                            IsPublic: $scope.newAlert.isPublic,
+                            //SendFeedback: $scope.newAlert.sendFeedback,
                             City: $scope.newAlert.city,
                             StreetName: $scope.newAlert.street,
                             StreetNo: $scope.newAlert.streetNo,
@@ -402,8 +404,11 @@ angular.module('app')
                         } else {
                             alertservice.AddAlertNoPhoto($scope.addAlertData).then(
                                 function (response) {
+                                    if (response.Error) {
+                                        toastr.error(response.Error, 'Error');
+                                    }
                                     loadAlerts();
-                                    resetAlert();
+                                    //resetAlert();
                                     toastr.success('Alerta a fost inregistrata cu succes', 'Succes');
                                 },
                                 function (error) {

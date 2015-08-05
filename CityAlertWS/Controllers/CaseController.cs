@@ -1,14 +1,17 @@
-﻿using CityAlertWS.Models;
+﻿using System.IO;
+using CityAlert.Domain.Modules;
+using CityAlert.Domain.ViewModels;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using CityAlertWS.Models;
+
 using System.Configuration;
 using System.Threading.Tasks;
-using CityAlertWS.Domain.Models;
+
 using CityAlertWS.Queries;
 
 namespace CityAlertWS.Controllers
@@ -16,6 +19,7 @@ namespace CityAlertWS.Controllers
     public class CaseController : ApiController
     {
         private readonly CaseQueries _caseQueries = new CaseQueries();
+        private readonly CaseModule _caseModule = new CaseModule();
 
         public IEnumerable<CaseModel> Get()
         {
@@ -48,9 +52,8 @@ namespace CityAlertWS.Controllers
 
                 if (string.IsNullOrWhiteSpace(error))
                 {
-                    
+                    response.IdAlert = _caseModule.AddAlert(model);
                 }
-                   // response.IdAlert = await caseModule.AddAlert(model);
                 else
                     response.Error = error;
             }
@@ -77,7 +80,7 @@ namespace CityAlertWS.Controllers
 
                 if (model.IsValid(out error))
                 {
-                    //response.IdAlert = await caseModule.AddAlert(model);
+                    response.IdAlert = _caseModule.AddAlert(model);
                 }
                 else
                     response.Error = error;
@@ -99,7 +102,8 @@ namespace CityAlertWS.Controllers
             // get the picture and the picture name here
             if (Request != null && Request.Content != null && Request.Content.IsMimeMultipartContent())
             {
-                string root = System.Web.HttpContext.Current.Server.MapPath("~/" + ConfigurationManager.AppSettings["AlertImagesPath"].ToString());
+                string root = System.Web.HttpContext.Current.Server.MapPath(Path.Combine("~", ConfigurationManager.AppSettings["AlertImagesPath"].ToString())
+                    );
                 var provider = new MultipartFormDataStreamProvider(root);
 
                 await Request.Content.ReadAsMultipartAsync(provider);

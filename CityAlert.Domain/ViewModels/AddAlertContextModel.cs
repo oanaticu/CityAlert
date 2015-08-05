@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
-using CityAlertWS.Domain.Models;
 
-namespace CityAlertWS.Models
+namespace CityAlert.Domain.ViewModels
 {
     public class AddAlertContextModel : IMultipartFormModel
     {
@@ -16,8 +15,8 @@ namespace CityAlertWS.Models
         public string AddressLongitude { get; set; }
         public string UserLatitude { get; set; }
         public string UserLongitude { get; set; }
-        public int IsPublic { get; set; }
-        public int SendFeedback { get; set; }
+        public bool IsPublic { get; set; }
+        //public bool SendFeedback { get; set; }
         //public int IsAddressModified { get; set; }
 
         //[ScriptIgnoreAttribute]
@@ -58,15 +57,15 @@ namespace CityAlertWS.Models
                 case "UserLongitude": UserLongitude = value;
                     break;
                 case "IsPublic":
-                    int isPublic;
-                    if (int.TryParse(value, out isPublic))
+                    bool isPublic;
+                    if (bool.TryParse(value, out isPublic))
                         IsPublic = isPublic;
                     break;
-                case "SendFeedback":
-                    int sendFeedback;
-                    if (int.TryParse(value, out sendFeedback))
+               /* case "SendFeedback":
+                    bool sendFeedback;
+                    if (bool.TryParse(value, out sendFeedback))
                         SendFeedback = sendFeedback;
-                    break;
+                    break;*/
                 /*case "IsAddressModified":
                     int isAddressModified;
                     if (int.TryParse(value, out isAddressModified))

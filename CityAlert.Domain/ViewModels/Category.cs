@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace CityAlertWS.Models
+namespace CityAlert.Domain.ViewModels
 {
     public class Category
     {

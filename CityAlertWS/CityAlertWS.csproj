@@ -160,11 +160,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AddAlertContextModel.cs" />
-    <Compile Include="Models\AddAlertResponse.cs" />
-    <Compile Include="Models\CaseModel.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\IMultipartFormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\CaseQueries.cs" />
     <Compile Include="Queries\DictionaryQueries.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace CityAlert.Domain.ViewModels
 {
@@ -7,6 +8,7 @@ namespace CityAlert.Domain.ViewModels
     {
         //public int ContactId { get; set; }
         public int CategoryId { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public string City { get; set; }
         public string StreetNo { get; set; }
@@ -19,8 +21,8 @@ namespace CityAlert.Domain.ViewModels
         //public bool SendFeedback { get; set; }
         //public int IsAddressModified { get; set; }
 
-        //[ScriptIgnoreAttribute]
-        //public byte[] PhotoContent { get; set; }
+        /*[ScriptIgnore]
+        public byte[] PhotoContent { get; set; }*/
         //[ScriptIgnoreAttribute]
         //public byte[] ThumbNail { get; set; }
         public string PhotoName { get; set; }

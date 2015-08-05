@@ -124,13 +124,22 @@ namespace CityAlertWS.Controllers
                     foreach (MultipartFileData file in provider.FileData)
                     {
                         string fileName = file.Headers.ContentDisposition.FileName;
-                        if (!string.IsNullOrWhiteSpace(fileName))
+                        
+                         if (!string.IsNullOrWhiteSpace(fileName))
                             fileName = fileName.Trim('"');
-                        byte[] fileContent = System.IO.File.ReadAllBytes(file.LocalFileName);
+
+                        var dotPosition = fileName.LastIndexOf(".", System.StringComparison.Ordinal);
+                        var extension = fileName.Substring(dotPosition);
+                        var newFileName = Guid.NewGuid() + extension;
+
+                       
+                        byte[] fileContent = File.ReadAllBytes(file.LocalFileName);
+                        File.WriteAllBytes(Path.Combine(root, newFileName), fileContent);
+
                         string mimetype = file.Headers.ContentType.MediaType;
                         if (fileContent.Length > 0)
-                            model.AddFile(fileName, fileContent, mimetype);
-                        //System.IO.File.Delete(file.LocalFileName);
+                            model.AddFile(newFileName, fileContent, mimetype);
+                        File.Delete(file.LocalFileName);
                     }
                 }
 

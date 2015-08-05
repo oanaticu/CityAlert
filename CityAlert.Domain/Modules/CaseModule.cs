@@ -20,6 +20,7 @@ namespace CityAlert.Domain.Modules
 
         public int AddAlert(AddAlertContextModel model)
         {
+            
             var newAlert = new Case()
                 {
                     CityName = model.City,
@@ -32,7 +33,7 @@ namespace CityAlert.Domain.Modules
                     StreetNo = model.StreetNo,
                     SysCategoryId = model.CategoryId,
                     SysStatusId = (int) SysStatusEnum.Sent,
-                    Title = model.Description,
+                    Title = model.Title,
                     CreatedOn = DateTime.Now, 
                     Code = Guid.NewGuid()
 

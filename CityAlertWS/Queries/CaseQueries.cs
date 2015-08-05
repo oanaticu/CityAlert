@@ -21,7 +21,7 @@ namespace CityAlertWS.Queries
 
         public List<CaseModel> GetAlerts()
         {
-            var cases = _context.Cases.Include(c => c.SysStatus).ToList();
+            var cases = _context.Cases.Include(c => c.SysStatus).OrderByDescending(c => c.CreatedOn).ToList();
             var list = new List<CaseModel>();
             foreach (var c in cases)
             {

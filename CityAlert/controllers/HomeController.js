@@ -19,7 +19,7 @@
 
             // initialization
             layoutservice.SetSelectedPage('home');
-            resetAlert();
+            initAlert();
             loadAlerts();
             loadCategories();
 
@@ -93,9 +93,15 @@
 
             }
 
-
+            $scope.resetPhoto = function() {
+                $scope.newAlert.photo = {};
+                $scope.uploadPhotoStyle = {
+                    'background-image': 'url(img/camera-icon.png)'
+                };
+            };
+            
             // private methods
-            function resetAlert() {
+            function initAlert() {
                 $scope.newAlert = {
                     isPublic: false,
                     
@@ -248,7 +254,6 @@
                     toastr.error(response.Error, 'Error');
                 } else {
                     loadAlerts();
-                    //resetAlert();
                     toastr.success('Alerta a fost inregistrata cu succes', 'Succes');
                 }
 

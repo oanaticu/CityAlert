@@ -191,6 +191,12 @@
   padding-bottom: 5px;
   font-size: 11px;
 }
+.ca-reset-photo {
+  color: red;
+  font-size: 20px !important;
+  background-color: black;
+  padding: 4px;
+}
 .ca-heading {
   padding: 2px 0;
   border-top: 1px solid #e2e2e2;

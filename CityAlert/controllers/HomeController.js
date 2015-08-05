@@ -70,10 +70,11 @@
                 $scope.alertMarkers = [];
 
                 $scope.alertMarkers = _.map($scope.alerts, function (elem) {
-                    return new google.maps.Marker({
-                        position: new google.maps.LatLng(elem.Lat, elem.Long),
-                        map: $scope.maps.mAlert
-                    });
+                    
+                        return new google.maps.Marker({
+                            position: new google.maps.LatLng(elem.Lat, elem.Long),
+                            map: $scope.maps.mAlert
+                        });
                 });
 
             }
@@ -163,7 +164,9 @@
                         });
 
                         $scope.alerts = alerts;
-                        placeMarkers();
+                        if ($scope.maps) {
+                            placeMarkers();
+                        }
                         loadAlertDetail();
                     },
                     function (error) {

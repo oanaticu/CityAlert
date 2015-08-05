@@ -18,26 +18,13 @@ namespace CityAlert.Domain.ViewModels
         public string UserLatitude { get; set; }
         public string UserLongitude { get; set; }
         public bool IsPublic { get; set; }
-        //public bool SendFeedback { get; set; }
-        //public int IsAddressModified { get; set; }
-
-        /*[ScriptIgnore]
-        public byte[] PhotoContent { get; set; }*/
-        //[ScriptIgnoreAttribute]
-        //public byte[] ThumbNail { get; set; }
         public string PhotoName { get; set; }
-        //public Guid IncindenceId { get; set; }
 
         public void SetPropertyValue(string propertyName, string value)
         {
             switch(propertyName)
             {
-               /* case "ContactId":
-                    int contactId;
-                    if (Int32.TryParse(value, out contactId))
-                        ContactId = contactId;
-                    break;*/
-                case "CategoryId": 
+              case "CategoryId": 
                     int categoryId;
                     if (Int32.TryParse(value, out categoryId))
                         CategoryId = categoryId;
@@ -63,16 +50,6 @@ namespace CityAlert.Domain.ViewModels
                     if (bool.TryParse(value, out isPublic))
                         IsPublic = isPublic;
                     break;
-               /* case "SendFeedback":
-                    bool sendFeedback;
-                    if (bool.TryParse(value, out sendFeedback))
-                        SendFeedback = sendFeedback;
-                    break;*/
-                /*case "IsAddressModified":
-                    int isAddressModified;
-                    if (int.TryParse(value, out isAddressModified))
-                        IsAddressModified = isAddressModified;
-                    break;*/
             }
         }
 
@@ -82,10 +59,6 @@ namespace CityAlert.Domain.ViewModels
             errorMessage = null;
             StringBuilder sb = new StringBuilder();
 
-            /*if(ContactId == 0)
-            {
-                sb.AppendLine("Id-ul contactului trebuie specificat.");
-            }*/
             if (CategoryId == 0)
             {
                 sb.AppendLine("Id-ul categorie trebuie specificat.");

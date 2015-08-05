@@ -274,7 +274,7 @@
   width: 100%;
 }
 .ca-alert-details {
-  max-height: 470px;
+  max-height: 500px;
   overflow: auto;
 }
 .ca-alert-details-img {

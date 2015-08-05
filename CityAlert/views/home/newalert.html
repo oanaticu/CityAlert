@@ -58,16 +58,18 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <p>Titlu</p>
             <input type="text" class="form-control" style="width: 100%" ng-model="newAlert.title" required/>
+            <div ng-show="fAddAlert.$submitted" class="ca-validation-err">
+                <div ng-show="!newAlert.title">Titlul este obligatoriu</div>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <p>Descrie situatia semnalata</p>
             <textarea rows="3" class="form-control" style="width: 100%" ng-model="newAlert.description" required></textarea>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
             <div ng-show="fAddAlert.$submitted" class="ca-validation-err">
                 <div ng-show="!newAlert.description">Descrierea este obligatorie</div>
             </div>
         </div>
+       
     </div>
     <div class="row ca-newalert-area">
         <div class="col-xs-12 col-sm-12 col-md-12">

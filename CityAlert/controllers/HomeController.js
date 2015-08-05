@@ -98,19 +98,14 @@
             function resetAlert() {
                 $scope.newAlert = {
                     isPublic: false,
-                    //sendFeedback: false,
-                    //isAddressModified: false,
+                    
                     photo: {}
                 };
                 $scope.uploadPhotoStyle = {
                     'background-image': 'url(img/camera-icon.png)'
                 };
             }
-            /*function resetAddress() {
-                $scope.newAlert.street = undefined;
-                $scope.newAlert.streetNo = undefined;
-                $scope.newAlert.city = undefined;
-            }*/
+          
             function setAddress(latlng) {
                 
                 $scope.newAlert.lat = latlng.G;
@@ -133,15 +128,15 @@
                                     if (sect.length > 0)
                                         $scope.newAlert.city += ', ' + sect;
                                 }
-                                //$scope.newAlert.isAddressModified = false;   
+                                
                             }
                         } else {
                             toastr.error('Nu s-a gasit niciun rezultat!', 'Error');
-                            //resetAddress();
+                            
                         }
                     } else {
                         toastr.error('Nu se poate determina locatia!', 'Error');
-                        //resetAddress();
+                        
                     }
 
                     $scope.$apply();
@@ -177,12 +172,11 @@
 
             function loadAlertDetail(code) {
                 var alerts = $scope.alerts;
-
                 if (code) {
-                    alerts = _.filter(alerts, function (alert) { return alert.Code.indexOf(code) > -1; });
+                    alerts = _.filter(alerts, function (alert) { return alert.Code.startsWith(code); });
                 }
 
-                if (alerts.length > 0) {
+                if (alerts.length > 0 && code) {
                     var sortedList = _.sortBy(alerts, function (elem) { return new Date(elem.ModifiedOn); });
                     $scope.alertDetail = _.last(sortedList);
                     $scope.hasAlertDetails = true;
@@ -196,11 +190,6 @@
                 if (categoryId) {
                     var parent = _.find($scope.categoriesHierarchy, function (elem) { return elem.Id == categoryId; });
                     $scope.subcategories = parent.SubCategories;
-                    if (parent.SubCategories[0]) {
-                        //$scope.newAlert.subCategoryId = parent.SubCategories[0].Id;
-                    } else {
-                        //$scope.newAlert.subCategoryId = undefined;
-                    }
                 }
 
             }
@@ -213,7 +202,6 @@
                                 $scope.categoriesHierarchy = categories;
 
                                 $scope.categories = categories;
-                                //$scope.newAlert.categoryId = categories[0].Id;
 
                                 loadSubCategories($scope.newAlert.categoryId);
                             }
@@ -303,12 +291,10 @@
                             AddressLatitude: $scope.newAlert.lat,
                             AddressLongitude: $scope.newAlert.long,
                             CategoryId: $scope.newAlert.subCategoryId,
-                            //ContactId: accountservice.GetUserData().ContactId,
+                            Title: $scope.newAlert.title,
                             Description: $scope.newAlert.description,
-                            //IsAddressModified: ($scope.newAlert.isAddressModified) ? 1 : 0,
                             PhotoName: $scope.newAlert.photo.name,
                             IsPublic: $scope.newAlert.isPublic,
-                            //SendFeedback: $scope.newAlert.sendFeedback,
                             City: $scope.newAlert.city,
                             StreetName: $scope.newAlert.street,
                             StreetNo: $scope.newAlert.streetNo,
@@ -326,7 +312,7 @@
                                         toastr.error(response.Error, 'Error');
                                     }
                                     loadAlerts();
-                                    //resetAlert();
+                                    
                                     toastr.success('Alerta a fost inregistrata cu succes', 'Succes');
                                 },
                                 function (error) {

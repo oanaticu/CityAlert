@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using CityAlert.Domain.Modules;
+using CityAlert.Domain.Services;
 using CityAlert.Domain.ViewModels;
 
 using System;
@@ -11,7 +12,7 @@ using System.Web.Http;
 
 using System.Configuration;
 using System.Threading.Tasks;
-
+using CityAlert.Resources;
 using CityAlertWS.Queries;
 
 namespace CityAlertWS.Controllers
@@ -20,6 +21,7 @@ namespace CityAlertWS.Controllers
     {
         private readonly CaseQueries _caseQueries = new CaseQueries();
         private readonly CaseModule _caseModule = new CaseModule();
+        private readonly LoggerService _loggerService = new LoggerService();
 
         public IEnumerable<CaseModel> Get()
         {
@@ -31,7 +33,7 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                //ProcessException("GetRecentAlert", ex, null);
+                _loggerService.ProcessException("GetRecentAlert", ex, null);
             }
 
             return response;
@@ -60,8 +62,8 @@ namespace CityAlertWS.Controllers
             catch (Exception ex)
             {
                 response.Error = ex.Message;
-                //ProcessException("AddAlert", ex, model);
-                //response.Error = loggerService.GetClientException(ex);
+                _loggerService.ProcessException("AddAlert", ex, model);
+                response.Error = _loggerService.GetClientException(ex);
             }
 
             return response;
@@ -87,9 +89,8 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                response.Error = ex.Message;
-                //ProcessException("AddAlertNoPhoto", ex, model);
-                //response.Error = loggerService.GetClientException(ex);
+                response.Error = _loggerService.GetClientException(ex);
+                _loggerService.ProcessException("AddAlertNoPhoto", ex, model);
             }
 
             return response;
@@ -144,22 +145,12 @@ namespace CityAlertWS.Controllers
                 }
 
             }
-            else throw new ApplicationException("The request is not mime multipart content");
+            else throw new ApplicationException(Errors.MimeTypeError);
 
             return error;
         }
 
-        private void ProcessException(string action, Exception ex, object model)
-        {
-            AggregateException aex = ex as AggregateException;
-            if (aex != null)
-            {
-                ex = aex.Flatten();
-                if (ex.InnerException != null) ex = ex.InnerException;
-            }
-
-            //loggerService.LogException(action, ex, model);
-        }
+        
 
     }
 }

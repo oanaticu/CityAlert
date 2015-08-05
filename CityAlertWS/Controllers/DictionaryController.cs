@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using CityAlert.Domain.Services;
 using CityAlert.Domain.ViewModels;
 using CityAlertWS.Queries;
 
@@ -13,6 +14,7 @@ namespace CityAlertWS.Controllers
     public class DictionaryController : ApiController
     {
         private readonly DictionaryQueries _dicQueries = new DictionaryQueries();
+        private readonly LoggerService _loggerService = new LoggerService();
 
         [ActionName("GetCategories")]
         [HttpGet]
@@ -26,7 +28,7 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                //var t = ex.Message;
+                _loggerService.ProcessException("GetRecentAlert", ex, null);
             }
 
             return res;

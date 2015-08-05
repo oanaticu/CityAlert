@@ -278,6 +278,10 @@
       <Project>{e7001874-ad39-4d74-9fea-db1fafd607a4}</Project>
       <Name>CityAlert.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CityAlert.Resources\CityAlert.Resources.csproj">
+      <Project>{5D9F0551-0CD9-4B23-8DB7-BB16EE9C27B9}</Project>
+      <Name>CityAlert.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -83,20 +83,22 @@
                             <div class="form">
                                 <div class="form-group">
                                     <label for="contacts-name">Name</label>
-                                    <input type="text" class="form-control" id="contacts-name">
+                                    <input type="text" class="form-control" id="contacts-name" ng-model="faq.name">
                                 </div>
                                 <div class="form-group">
                                     <label for="contacts-email">Email</label>
-                                    <input type="email" class="form-control" id="contacts-email">
+                                    <input type="email" class="form-control" id="contacts-email" ng-model="faq.email">
                                 </div>
                                 <div class="form-group">
                                     <label for="contacts-message">Message</label>
-                                    <textarea class="form-control" rows="5" id="contacts-message"></textarea>
+                                    <textarea class="form-control" rows="5" id="contacts-message" ng-model="faq.message"></textarea>
                                 </div>
                                 <div class="form-group">
                                     *Campurile marcate cu asterisc sunt obligatorii.
                                 </div>
-                                <button type="submit" class="btn btn-primary ca-btn-submit"><i class="icon-ok"></i> Trimite</button>
+                                <button type="button" class="btn btn-primary ca-btn-submit" ng-click="sendFAQ()">
+                                    <i class="icon-ok"></i> Trimite
+                                </button>
                             </div>
                             <!-- END FORM-->
                         </div>

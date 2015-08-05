@@ -11,6 +11,7 @@
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
     <file>/services/accountservice.js</file>
+    <file>/services/contactservice.js</file>
     <file>/services/alertservice.js</file>
     <file>/services/layoutservice.js</file>
     <file>/services/requestservice.js</file>

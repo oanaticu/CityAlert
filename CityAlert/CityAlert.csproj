@@ -5891,6 +5891,7 @@
     <Content Include="scripts\underscore.min.js" />
     <Content Include="services\accountservice.js" />
     <Content Include="services\alertservice.js" />
+    <Content Include="services\contactservice.js" />
     <Content Include="services\layoutservice.js" />
     <Content Include="services\requestservice.js" />
     <Content Include="services\services.js">

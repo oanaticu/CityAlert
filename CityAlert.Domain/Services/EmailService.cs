@@ -16,6 +16,7 @@ namespace CityAlert.Domain.Services
             bool smtpUseSSL = ConfigurationManager.AppSettings["SMTP_UseSSL"] == "1";
 
             MailMessage mail = new MailMessage(smtpFrom, smtpTo);
+            mail.Headers.Add("From", smtpFrom);
             SmtpClient client = new SmtpClient();
             client.Port = smtpPort;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;

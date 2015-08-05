@@ -61,7 +61,6 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                response.Error = ex.Message;
                 _loggerService.ProcessException("AddAlert", ex, model);
                 response.Error = _loggerService.GetClientException(ex);
             }

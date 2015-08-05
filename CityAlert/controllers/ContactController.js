@@ -1,8 +1,24 @@
 ﻿angular.module('app')
-    .controller('ContactController', ['$scope', 'layoutservice', function ($scope, layoutservice) {
+    .controller('ContactController', ['$scope', 'layoutservice', 'contactservice', 'toastr', function ($scope, layoutservice, contactservice, toastr) {
         layoutservice.SetSelectedPage('contact');
 
     $scope.lat = 44.4268;
     $scope.lng = 26.1025;
+        $scope.faq = {};
 
-}])
+        $scope.sendFAQ = function () {
+            var data = {
+                Name: $scope.faq.name,
+                Email: $scope.faq.email,
+                Message: $scope.faq.message
+            };
+
+            contactservice.SendFAQ(data).then(
+                function(resp) {
+                    toastr.success('Intrebarea a fost trimisa cu succes', 'Succes');
+                },
+                function(error) {
+                    toastr.error(error, 'Error');
+                });
+        };
+    }])

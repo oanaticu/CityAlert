@@ -54,6 +54,22 @@ angular.module('app')
        RecoverPassword: recoverPassword
     };
 }]);
+///#source 1 1 /services/contactservice.js
+angular.module('app')
+.factory('contactservice', ['$rootScope','$http', '$q', 'staticdata', 'requestservice', '$cookies', function ($rootScope, $http, $q, staticdata, req, $cookies) {
+    var sendFAQUrl = staticdata.ApiUrl + 'Contact/SendFAQ';
+    
+    function sendFAQ(data) {
+        debugger;
+        var request = $http.post(sendFAQUrl, data);
+
+        return (request.then(req.HandleSuccess, req.HandleError));
+    }
+
+    return {
+        SendFAQ: sendFAQ
+    };
+}]);
 ///#source 1 1 /services/alertservice.js
 angular.module('app')
 .factory('alertservice', ['$http', '$q', 'staticdata', 'requestservice', '_', function ($http, $q, staticdata, req, _ ) {

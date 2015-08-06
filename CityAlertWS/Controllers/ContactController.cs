@@ -49,7 +49,7 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                _loggerService.LogException("SendFAQ", ex, null);
+                _loggerService.LogException("SendFAQ", ex, model);
                 response.Error = _loggerService.GetClientException(ex);
             }
 
@@ -58,13 +58,13 @@ namespace CityAlertWS.Controllers
 
         [ActionName("SubscribeToNewsletter")]
         [HttpPost]
-        public SubscribeToNewsletterResponse SubscribeToNewsletter(string email)
+        public async Task<SubscribeToNewsletterResponse> SubscribeToNewsletter(SubscribeToNewsletterModel model)
         {
             var response = new SubscribeToNewsletterResponse();
 
             try
             {
-                var cleanEmail = email.Trim().ToLower();
+                var cleanEmail = model.Email.Trim().ToLower();
                 
                 if (!_util.IsValidEmail(cleanEmail))
                 {
@@ -78,7 +78,7 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                _loggerService.LogException("SubscribeToNewsletter", ex, null);
+                _loggerService.LogException("SubscribeToNewsletter", ex, model);
                 response.Error = _loggerService.GetClientException(ex);
             }
 

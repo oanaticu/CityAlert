@@ -439,8 +439,8 @@ angular.module('app')
     ]);
 ///#source 1 1 /controllers/LayoutController.js
 angular.module('app')
-    .controller('LayoutController', ['$rootScope','$scope', '$location', 'layoutservice', 'accountservice',
-        function ($rootScope, $scope, $location, layoutservice, accountservice) {
+    .controller('LayoutController', ['$rootScope','$scope', '$location','toastr', 'layoutservice', 'accountservice', 'contactservice',
+        function ($rootScope, $scope, $location, toastr,layoutservice, accountservice, contactservice) {
         
             $scope.loginData = accountservice.GetUserData();
             $scope.userLoggedIn = accountservice.UserLoggedIn();
@@ -460,7 +460,13 @@ angular.module('app')
             $scope.newsletterEmail = "";
 
             $scope.subscribeToNewsletter = function() {
-
+                contactservice.SubscribeToNewsletter({ Email: $scope.newsletterEmail }).then(
+                function (resp) {
+                    toastr.success('Inregistrarea a fost facuta cu succes', 'Succes');
+                },
+                function (error) {
+                    toastr.error(error, 'Error');
+                });
             };
 
         }])

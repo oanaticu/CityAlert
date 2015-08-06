@@ -101,6 +101,7 @@
     <Compile Include="ViewModels\IMultipartFormModel.cs" />
     <Compile Include="ViewModels\SendFAQModel.cs" />
     <Compile Include="ViewModels\SendFAQResponse.cs" />
+    <Compile Include="ViewModels\SubscribeToNewsletterModel.cs" />
     <Compile Include="ViewModels\SubscribeToNewsletterResponse.cs" />
   </ItemGroup>
   <ItemGroup>

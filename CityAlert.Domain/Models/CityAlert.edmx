@@ -34,6 +34,14 @@
           <Property Name="Context" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FullErrorText" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FAQId" />
+          </Key>
+          <Property Name="FAQId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="NewsletterSubscription">
           <Key>
             <PropertyRef Name="NewsletterSubscriptionId" />
@@ -85,6 +93,7 @@
         <EntityContainer Name="CityAlertModelStoreContainer">
           <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsletterSubscription" EntityType="Self.NewsletterSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysCategory" EntityType="Self.SysCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysStatus" EntityType="Self.SysStatus" Schema="dbo" store:Type="Tables" />
@@ -178,6 +187,7 @@
           </AssociationSet>
           <EntitySet Name="Errors" EntityType="CityAlertModel.Error" />
           <EntitySet Name="NewsletterSubscriptions" EntityType="CityAlertModel.NewsletterSubscription" />
+          <EntitySet Name="FAQs" EntityType="CityAlertModel.FAQ" />
         </EntityContainer>
         <EntityType Name="Error">
           <Key>
@@ -196,6 +206,14 @@
           <Property Name="NewsletterSubscriptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FAQId" />
+          </Key>
+          <Property Name="FAQId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -258,6 +276,15 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="NewsletterSubscriptionId" ColumnName="NewsletterSubscriptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQs">
+            <EntityTypeMapping TypeName="CityAlertModel.FAQ">
+              <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="FAQId" ColumnName="FAQId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

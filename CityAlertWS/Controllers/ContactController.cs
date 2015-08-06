@@ -22,6 +22,7 @@ namespace CityAlertWS.Controllers
         private readonly EmailService _emailService = new EmailService();
         private readonly ContactModule _contactModule = new ContactModule();
         private readonly RegexUtilities _util = new RegexUtilities();
+        private readonly ContactQueries _contactQueries = new ContactQueries();
 
         [ActionName("SendFAQ")]
         [HttpPost]
@@ -84,5 +85,24 @@ namespace CityAlertWS.Controllers
 
             return response;
         }
+
+        [ActionName("GetFAQs")]
+        [HttpGet]
+        public IEnumerable<FAQModel> GetFAQs()
+        {
+            IEnumerable<FAQModel> response = new List<FAQModel>();
+
+            try
+            {
+                response = _contactQueries.GetFAQs();
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogException("GetFAQs", ex, null);
+            }
+
+            return response;
+        }
+
     }
 }

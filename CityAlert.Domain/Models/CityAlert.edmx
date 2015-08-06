@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CityAlertModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CityAlertModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Case">
           <Key>
             <PropertyRef Name="CaseId" />
@@ -23,6 +23,24 @@
           <Property Name="Lat" Type="nvarchar" MaxLength="100" />
           <Property Name="Long" Type="nvarchar" MaxLength="100" />
           <Property Name="ImageName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OccurredOn" Type="datetime" Nullable="false" />
+          <Property Name="Method" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Context" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullErrorText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsletterSubscription">
+          <Key>
+            <PropertyRef Name="NewsletterSubscriptionId" />
+          </Key>
+          <Property Name="NewsletterSubscriptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SysCategory">
           <Key>
@@ -66,6 +84,8 @@
         </Association>
         <EntityContainer Name="CityAlertModelStoreContainer">
           <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsletterSubscription" EntityType="Self.NewsletterSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysCategory" EntityType="Self.SysCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysStatus" EntityType="Self.SysStatus" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Case_SysCategory" Association="Self.FK_Case_SysCategory">
@@ -77,8 +97,7 @@
             <End Role="Case" EntitySet="Case" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CityAlertModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -157,7 +176,27 @@
             <End Role="SysStatus" EntitySet="SysStatus1" />
             <End Role="Case" EntitySet="Cases" />
           </AssociationSet>
+          <EntitySet Name="Errors" EntityType="CityAlertModel.Error" />
+          <EntitySet Name="NewsletterSubscriptions" EntityType="CityAlertModel.NewsletterSubscription" />
         </EntityContainer>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OccurredOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Method" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Context" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullErrorText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NewsletterSubscription">
+          <Key>
+            <PropertyRef Name="NewsletterSubscriptionId" />
+          </Key>
+          <Property Name="NewsletterSubscriptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -199,6 +238,26 @@
                 <ScalarProperty Name="SysStatusId" ColumnName="SysStatusId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Color" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Errors">
+            <EntityTypeMapping TypeName="CityAlertModel.Error">
+              <MappingFragment StoreEntitySet="Error">
+                <ScalarProperty Name="FullErrorText" ColumnName="FullErrorText" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="OccurredOn" ColumnName="OccurredOn" />
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsletterSubscriptions">
+            <EntityTypeMapping TypeName="CityAlertModel.NewsletterSubscription">
+              <MappingFragment StoreEntitySet="NewsletterSubscription">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NewsletterSubscriptionId" ColumnName="NewsletterSubscriptionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

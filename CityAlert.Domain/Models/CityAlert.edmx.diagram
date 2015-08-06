@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="CityAlertModel.SysStatus" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CityAlertModel.FK_Case_SysCategory" ManuallyRouted="false" />
         <AssociationConnector Association="CityAlertModel.FK_Case_SysStatus" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CityAlertModel.Error" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CityAlertModel.NewsletterSubscription" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

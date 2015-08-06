@@ -28,7 +28,7 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                _loggerService.ProcessException("GetRecentAlert", ex, null);
+                _loggerService.LogException("GetRecentAlert", ex, null);
             }
 
             return res;

@@ -29,16 +29,15 @@ namespace CityAlertWS.Controllers
             {
                 var to = ConfigurationManager.AppSettings["SMTP_Account"];
 
-                string body = "From: " + model.Name + "<br/>";
-                body += "Email: " + model.Email + "<br/>";
-                body += "Subject: FAQ <br/>";
-                body += "Question: <br/>" + model.Message + "<br/>";
+                string body = "Nume utilizator: <strong>" + model.Name + "</strong><br/>";
+                body += "Email: <strong>" + model.Email + "</strong><br/>";
+                body += "Mesaj: <br/>" + model.Message + "<br/>";
 
                 await _emailService.SendEmail(model.Email, to, "FAQ", body);
             }
             catch (Exception ex)
             {
-                _loggerService.ProcessException("SendFAQ", ex, null);
+                _loggerService.LogException("SendFAQ", ex, null);
                 response.Error = _loggerService.GetClientException(ex);
             }
 

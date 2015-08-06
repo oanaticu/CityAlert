@@ -33,7 +33,7 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                _loggerService.ProcessException("GetRecentAlert", ex, null);
+                _loggerService.LogException("GetRecentAlert", ex, null);
             }
 
             return response;
@@ -61,7 +61,7 @@ namespace CityAlertWS.Controllers
             }
             catch (Exception ex)
             {
-                _loggerService.ProcessException("AddAlert", ex, model);
+                _loggerService.LogException("AddAlert", ex, model);
                 response.Error = _loggerService.GetClientException(ex);
             }
 
@@ -89,7 +89,7 @@ namespace CityAlertWS.Controllers
             catch (Exception ex)
             {
                 response.Error = _loggerService.GetClientException(ex);
-                _loggerService.ProcessException("AddAlertNoPhoto", ex, model);
+                _loggerService.LogException("AddAlertNoPhoto", ex, model);
             }
 
             return response;

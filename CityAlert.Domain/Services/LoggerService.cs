@@ -3,31 +3,47 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using CityAlert.Domain.Models;
 using CityAlert.Resources;
 
 namespace CityAlert.Domain.Services
 {
-    public class LoggerService 
+    public class LoggerService
     {
+        private readonly CityAlertContext _context;
+
+        public LoggerService()
+        {
+            _context = new CityAlertContext();
+        }
+
         public void LogException(string method, Exception ex, object context)
         {
-            try
+            var aex = ex as AggregateException;
+            if (aex != null)
             {
-                AggregateException aex = ex as AggregateException;
-                if (aex != null)
-                {
-                    ex = aex.Flatten();
-                    if (ex.InnerException != null) ex = ex.InnerException;
-                }
+                ex = aex.Flatten();
+                if (ex.InnerException != null) ex = ex.InnerException;
+            }
 
-                string contextString = string.Empty;
-                if(context != null)
-                {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    contextString = serializer.Serialize(context);
-                }
+            string contextString = string.Empty;
+            if (context != null)
+            {
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                contextString = serializer.Serialize(context);
+            }
 
-                /*using (SqlConnection conn = new SqlConnection(SQLDBConnectionString()))
+            var error = new Error()
+                {
+                    OccurredOn = DateTime.Now,
+                    Context = contextString,
+                    Method = method,
+                    FullErrorText = ex.ToString()
+                };
+            _context.Errors.Add(error);
+            _context.SaveChanges();
+
+            /*using (SqlConnection conn = new SqlConnection(SQLDBConnectionString()))
                 {
                     conn.Open();
                     using (SqlCommand cmd = conn.CreateCommand())
@@ -40,10 +56,7 @@ namespace CityAlert.Domain.Services
                         cmd.ExecuteNonQuery();
                     }
                 }*/
-            }
-            catch
-            {
-            }
+
         }
 
         public void ThrowGenericException(Exception ex)
@@ -56,9 +69,9 @@ namespace CityAlert.Domain.Services
             return Errors.GeneralError;
         }
 
-        public void ProcessException(string action, Exception ex, object model)
+        /*public void ProcessException(string action, Exception ex, object model)
         {
-            AggregateException aex = ex as AggregateException;
+            var aex = ex as AggregateException;
             if (aex != null)
             {
                 ex = aex.Flatten();
@@ -66,6 +79,6 @@ namespace CityAlert.Domain.Services
             }
 
             LogException(action, ex, model);
-        }
+        }*/
     }
 }

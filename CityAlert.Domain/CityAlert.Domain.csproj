@@ -75,6 +75,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CityAlert.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Error.cs">
+      <DependentUpon>CityAlert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsletterSubscription.cs">
+      <DependentUpon>CityAlert.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SysCategory.cs">
       <DependentUpon>CityAlert.tt</DependentUpon>
     </Compile>

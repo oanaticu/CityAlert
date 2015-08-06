@@ -457,6 +457,10 @@ angular.module('app')
 
             $scope.fallbackLat = 44.426977;
             $scope.fallbackLong = 26.103564;
+            $scope.newsletterEmail = "";
 
+            $scope.subscribeToNewsletter = function() {
+
+            };
 
         }])

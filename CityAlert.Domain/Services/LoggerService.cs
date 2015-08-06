@@ -43,20 +43,6 @@ namespace CityAlert.Domain.Services
             _context.Errors.Add(error);
             _context.SaveChanges();
 
-            /*using (SqlConnection conn = new SqlConnection(SQLDBConnectionString()))
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = @"insert into [dbo].[ts_errorLog](Method,Context,FullErrorText) VALUES (@method,@contextString,@fullErrorText)";
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.Add(new SqlParameter("method", method));
-                        cmd.Parameters.Add(new SqlParameter("contextString", contextString));
-                        cmd.Parameters.Add(new SqlParameter("fullErrorText", ex.ToString()));
-                        cmd.ExecuteNonQuery();
-                    }
-                }*/
-
         }
 
         public void ThrowGenericException(Exception ex)
@@ -68,17 +54,5 @@ namespace CityAlert.Domain.Services
         {
             return Errors.GeneralError;
         }
-
-        /*public void ProcessException(string action, Exception ex, object model)
-        {
-            var aex = ex as AggregateException;
-            if (aex != null)
-            {
-                ex = aex.Flatten();
-                if (ex.InnerException != null) ex = ex.InnerException;
-            }
-
-            LogException(action, ex, model);
-        }*/
     }
 }

@@ -22,9 +22,9 @@
                     <p>Te poti abona la newsletter-ul nostru. Multumim!</p>
                     <form action="#">
                         <div class="input-group">
-                            <input type="text" placeholder="youremail@mail.com" class="form-control">
+                            <input type="text" placeholder="youremail@mail.com" class="form-control" ng-model="newsletterEmail">
                             <span class="input-group-btn">
-                                <button class="btn ca-btn-submit" type="submit">Aboneaza-te</button>
+                                <button class="btn ca-btn-submit" type="button" ng-click="subscribeToNewsletter()">Aboneaza-te</button>
                             </span>
                         </div>
                     </form>

@@ -58,7 +58,7 @@ namespace CityAlertWS.Controllers
 
         [ActionName("SubscribeToNewsletter")]
         [HttpPost]
-        public async Task<SubscribeToNewsletterResponse> SubscribeToNewsletter(SubscribeToNewsletterModel model)
+        public SubscribeToNewsletterResponse SubscribeToNewsletter(SubscribeToNewsletterModel model)
         {
             var response = new SubscribeToNewsletterResponse();
 

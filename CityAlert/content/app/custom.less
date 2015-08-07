@@ -1,20 +1,21 @@
 ﻿@import "_variables";
 @import "_responsive-cols";
 
-body{
+body {
     color: black;
 }
 
 .site-logo {
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-right:0;
+    margin-right: 0;
     width: 250px;
 }
 
 a {
     color: @linkcolor !important;
-    &:hover, &:focus, &.selected{
+
+    &:hover, &:focus, &.selected {
         color: @submitbtncolor !important;
         /*font-weight: bold !important;*/
     }
@@ -24,7 +25,7 @@ a {
     padding-top: 25px;
     padding-bottom: 10px;
 }
- 
+
 .header .mobi-toggler:hover {
     background-color: @submitbtncolor;
     border-color: @submitbtncolor;
@@ -50,22 +51,33 @@ a {
 }
 
 .modal {
-top:10%;
-outline: none;
+    top: 10%;
+    outline: none;
 }
 
-.modal.modal-wide .modal-dialog {
-  width: 90%;
-  .modal-body{
-      height:550px;
-      .ca-gmaps{
-    height: 100%;
-}
-  }
-}
+    .modal.modal-wide .modal-dialog {
+        width: 90%;
+
+        .modal-body {
+            height: 450px;
+
+            .ca-gmaps {
+                height: 100%;
+            }
+        }
+    }
+
+    .modal .modal-dialog {
+        .modal-body {
+            
+            .ca-gmaps {
+                height: 200px;
+            }
+        }
+    }
 
 
-  /*map, div[map] {display:block; width:450px; height:300px;}*/
+/*map, div[map] {display:block; width:450px; height:300px;}*/
 
 @media (max-width: 480px) {
     .pre-header .list-inline li {
@@ -143,6 +155,7 @@ outline: none;
 .service-box {
     padding-left: 10px;
     padding-right: 10px;
+
     p {
         color: black;
     }
@@ -214,11 +227,11 @@ outline: none;
     font-size: 11px;
 }
 
-.ca-reset-photo{
+.ca-reset-photo {
     color: red;
     font-size: 20px !important;
     background-color: black;
-    padding:4px;
+    padding: 4px;
 }
 
 .ca-heading {
@@ -296,7 +309,8 @@ outline: none;
     margin-left: 0;
     margin-right: 0;
     border-bottom: 1px solid white;
-    .ca-alert-code{
+
+    .ca-alert-code {
         font-size: 10px;
     }
 
@@ -393,7 +407,7 @@ outline: none;
             background-color: transparent;
             color: @submitbtncolor;
             text-decoration: none;
-            font-weight:bold;
+            font-weight: bold;
             border-bottom: 1px solid @linkcolor;
         }
 
@@ -401,7 +415,7 @@ outline: none;
             background-color: transparent;
             color: @submitbtncolor;
             text-decoration: none;
-            font-weight:bold;
+            font-weight: bold;
             border-bottom: 1px solid @linkcolor;
         }
 
@@ -409,7 +423,7 @@ outline: none;
             background-color: transparent;
             color: @submitbtncolor;
             text-decoration: none;
-            font-weight:bold;
+            font-weight: bold;
             border-bottom: 1px solid @linkcolor;
         }
     }
@@ -443,14 +457,13 @@ outline: none;
 .pre-footer {
     background-color: @headercolor;
     color: black;
-        border: 1px solid #CBCDCD;
+    border: 1px solid #CBCDCD;
 
     h2 {
         color: black;
         text-transform: uppercase;
         font-weight: bold;
     }
-
     /*a {
         color: @linkcolor;
     }*/
@@ -476,7 +489,6 @@ outline: none;
     background-position: center;
     background-size: cover;
     /*float: right;*/
-
     input {
         filter: alpha(opacity=0);
         opacity: 0;

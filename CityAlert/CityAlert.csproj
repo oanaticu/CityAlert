@@ -4560,6 +4560,9 @@
     <Content Include="img\site\slide_1.jpg" />
     <Content Include="img\site\slide_2.jpg" />
     <Content Include="img\site\slide_3.jpg" />
+    <Content Include="img\site\slide_4.png" />
+    <Content Include="img\site\slide_5.png" />
+    <Content Include="img\site\slide_6.png" />
     <Content Include="img\trabant.JPG" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-animate.js" />

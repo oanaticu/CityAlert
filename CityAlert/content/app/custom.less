@@ -1,7 +1,9 @@
 ﻿@import "_variables";
 @import "_responsive-cols";
 
-
+body{
+    color: black;
+}
 
 .site-logo {
     padding-top: 10px;
@@ -10,9 +12,29 @@
     width: 250px;
 }
 
+a {
+    color: @linkcolor !important;
+    &:hover, &:focus, &.selected{
+        color: @submitbtncolor !important;
+        /*font-weight: bold !important;*/
+    }
+}
+
 .header-navigation > ul > li > a {
     padding-top: 25px;
     padding-bottom: 10px;
+}
+ 
+.header .mobi-toggler:hover {
+    background-color: @submitbtncolor;
+    border-color: @submitbtncolor;
+}
+
+@media (max-width: 1024px) {
+    .header .header-navigation li > a:hover, .header .header-navigation li.active > a, .header .header-navigation li.open > a:hover {
+        border-bottom-color: @linkcolor !important;
+        color: @submitbtncolor !important;
+    }
 }
 
 .dropdown-menu {
@@ -121,6 +143,9 @@ outline: none;
 .service-box {
     padding-left: 10px;
     padding-right: 10px;
+    p {
+        color: black;
+    }
 
     .service-box-heading {
         text-transform: uppercase;
@@ -351,11 +376,11 @@ outline: none;
 
 .header {
     background-color: @headercolor;
-    color: @utilitycolor;
+    color: black;
     margin-bottom: 0;
 
     .header-navigation > ul > li > a {
-        color: @utilitycolor;
+        color: @linkcolor;
 
         &:hover {
             background-color: transparent;
@@ -368,6 +393,7 @@ outline: none;
             background-color: transparent;
             color: @submitbtncolor;
             text-decoration: none;
+            font-weight:bold;
             border-bottom: 1px solid @linkcolor;
         }
 
@@ -375,6 +401,7 @@ outline: none;
             background-color: transparent;
             color: @submitbtncolor;
             text-decoration: none;
+            font-weight:bold;
             border-bottom: 1px solid @linkcolor;
         }
 
@@ -382,6 +409,7 @@ outline: none;
             background-color: transparent;
             color: @submitbtncolor;
             text-decoration: none;
+            font-weight:bold;
             border-bottom: 1px solid @linkcolor;
         }
     }
@@ -413,8 +441,9 @@ outline: none;
 }
 
 .pre-footer {
-    background-color: @utilitycolor;
+    background-color: @headercolor;
     color: black;
+        border: 1px solid #CBCDCD;
 
     h2 {
         color: black;
@@ -422,9 +451,9 @@ outline: none;
         font-weight: bold;
     }
 
-    a {
+    /*a {
         color: @linkcolor;
-    }
+    }*/
 }
 
 .pre-footer-subscribe-box input {
@@ -432,8 +461,8 @@ outline: none;
 }
 
 .footer {
-    background-color: @preheadercolor;
-    color: @utilitycolor;
+    background-color: @utilitycolor;
+    color: black;
 }
 
 .ca-validation-err {

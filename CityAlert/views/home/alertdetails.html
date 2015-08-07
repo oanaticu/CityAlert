@@ -5,11 +5,14 @@
     <p>
         <img class="ca-alert-details-img img-responsive fancybox-data-img" ng-src="{{alertDetail.Image}}" alt="" />
     </p>
-    <p ng-bind="alertDetail.Description">
-
+    <p >
+        Descriere:
+        <span ng-bind="alertDetail.Description">
+            
+        </span>
     </p>
     <p>
-        <strong>STATUS: <span style="color: red;" ng-bind="alertDetail.Status"></span></strong>
+        <strong>STATUS: <span style="color: {{alertDetail.Color}};" ng-bind="alertDetail.Status"></span></strong>
         <br />
         pe
         <span ng-bind="alertDetail.DateDisplay">
@@ -19,20 +22,17 @@
 </div>
 <div ng-show="!hasAlertDetails">
     <p>
-        Titlu
+        Titlu: ...
     </p>
     <p>
         <img class="ca-alert-details-img" src="img/no-image.jpg" alt="" class="img-responsive fancybox-data-img" />
     </p>
     <p >
-        Descriere
+        Descriere: ...
     </p>
     <p>
-        <strong>STATUS: <span style="color: red;" > Status </span></strong>
+        <strong>STATUS: <span > ... </span></strong>
         <br />
-        pe
-        <span >
-            Data
-        </span>
+        pe data ...
     </p>
 </div>

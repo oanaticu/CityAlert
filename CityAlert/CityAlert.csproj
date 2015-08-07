@@ -4558,6 +4558,9 @@
     <Content Include="img\site\banner_2.jpg" />
     <Content Include="img\site\banner_3.png" />
     <Content Include="img\site\logo.png" />
+    <Content Include="img\site\problem_1.png" />
+    <Content Include="img\site\problem_2.png" />
+    <Content Include="img\site\problem_3.png" />
     <Content Include="img\site\slide_1.jpg" />
     <Content Include="img\site\slide_2.jpg" />
     <Content Include="img\site\slide_3.jpg" />

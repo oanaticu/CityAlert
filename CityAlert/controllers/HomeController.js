@@ -66,7 +66,6 @@
 
             });
             function placeMarkers() {
-                debugger;
                 for (var i = 0; i < $scope.alertMarkers.length; i++) {
                     $scope.alertMarkers[i].setMap(null);
                 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using CityAlert.Domain.Models;
@@ -27,6 +28,22 @@ namespace CityAlertWS.Queries
 
             return faqs;
 
+        }
+
+        public IEnumerable<EventModel> GetEvents()
+        {
+            var dbEvents = _context.Events.OrderByDescending(e => e.OccurredOn).ToList();
+
+            var events = new List<EventModel>();
+
+            dbEvents.ForEach(a => events.Add(new EventModel()
+                {
+                    Date = a.OccurredOn.ToString("dd.MM.yyyy"),
+                    Name = a.Name
+                }));
+                    
+
+            return events;
         }
     }
 }

@@ -31,5 +31,6 @@ namespace CityAlert.Domain.Models
         public virtual DbSet<Error> Errors { get; set; }
         public virtual DbSet<NewsletterSubscription> NewsletterSubscriptions { get; set; }
         public virtual DbSet<FAQ> FAQs { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
     }
 }

@@ -34,6 +34,14 @@
           <Property Name="Context" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FullErrorText" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OccurredOn" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
         <EntityType Name="FAQ">
           <Key>
             <PropertyRef Name="FAQId" />
@@ -93,6 +101,7 @@
         <EntityContainer Name="CityAlertModelStoreContainer">
           <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsletterSubscription" EntityType="Self.NewsletterSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysCategory" EntityType="Self.SysCategory" Schema="dbo" store:Type="Tables" />
@@ -188,6 +197,7 @@
           <EntitySet Name="Errors" EntityType="CityAlertModel.Error" />
           <EntitySet Name="NewsletterSubscriptions" EntityType="CityAlertModel.NewsletterSubscription" />
           <EntitySet Name="FAQs" EntityType="CityAlertModel.FAQ" />
+          <EntitySet Name="Events" EntityType="CityAlertModel.Event" />
         </EntityContainer>
         <EntityType Name="Error">
           <Key>
@@ -214,6 +224,14 @@
           <Property Name="FAQId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Question" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OccurredOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -285,6 +303,15 @@
                 <ScalarProperty Name="Answer" ColumnName="Answer" />
                 <ScalarProperty Name="Question" ColumnName="Question" />
                 <ScalarProperty Name="FAQId" ColumnName="FAQId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="CityAlertModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OccurredOn" ColumnName="OccurredOn" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

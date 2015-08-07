@@ -84,17 +84,9 @@
                                 <span>Cronologie</span>
                             </div>
                             <ul class="list-unstyled row">
-                                <li>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">Iulie 2014</div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">Prima discutie</div>
-                                </li>
-                                <li>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">Noiembrie 2014</div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">Planificare si strategie</div>
-                                </li>
-                                <li>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">Martie 2015</div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">eveniment</div>
+                                <li ng-repeat="event in events">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">{{event.Date}}</div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">{{event.Name}}</div>
                                 </li>
                             </ul>
                         </div>

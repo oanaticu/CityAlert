@@ -1,8 +1,22 @@
 ///#source 1 1 /controllers/AboutController.js
 angular.module('app')
-    .controller('AboutController', ['$scope', 'layoutservice', function ($scope, layoutservice) {
+    .controller('AboutController', ['$scope', 'layoutservice', 'aboutservice',
+        function ($scope, layoutservice, aboutservice) {
     
         layoutservice.SetSelectedPage('about');
+        
+        $scope.events = [];
+        loadEvents();
+        
+        function loadEvents() {
+            aboutservice.GetEvents().then(
+                function (events) {
+                    $scope.events = events;
+                },
+                function (error) {
+                    toastr.error(error, 'Error');
+                });
+        }
 }])
 ///#source 1 1 /controllers/AccountController.js
 angular.module('app')
@@ -75,15 +89,18 @@ angular.module('app')
         }])
 ///#source 1 1 /controllers/ContactController.js
 angular.module('app')
-    .controller('ContactController', ['$scope', 'layoutservice', 'contactservice', 'toastr', function ($scope, layoutservice, contactservice, toastr) {
+    .controller('ContactController', ['$scope', 'layoutservice', 'contactservice', 'toastr',
+        function ($scope, layoutservice, contactservice, toastr) {
         layoutservice.SetSelectedPage('contact');
 
         $scope.lat = 44.4268;
         $scope.lng = 26.1025;
         $scope.faq = {};
         $scope.faqList = [];
+        
 
         loadFAQs();
+        
 
         $scope.sendFAQ = function () {
             var data = {
@@ -110,6 +127,7 @@ angular.module('app')
                      toastr.error(error, 'Error');
                  });
         }
+        
 
     }])
 ///#source 1 1 /controllers/HomeController.js

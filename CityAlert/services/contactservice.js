@@ -3,6 +3,7 @@
     var sendFAQUrl = staticdata.ApiUrl + 'Contact/SendFAQ';
     var subscribeToNewsletterUrl = staticdata.ApiUrl + 'Contact/SubscribeToNewsletter';
     var getFAQUrl = staticdata.ApiUrl + 'Contact/GetFAQs';
+    var getEventsUrl = staticdata.ApiUrl + 'Contact/GetEvents';
     
     function sendFAQ(data) {
         var request = $http.post(sendFAQUrl, data);
@@ -21,10 +22,17 @@
 
             return (request.then(req.HandleSuccess, req.HandleError));
     }
+    
+    function getEvents() {
+        var request = $http.get(getEventsUrl);
+
+        return (request.then(req.HandleSuccess, req.HandleError));
+    }
 
     return {
         SendFAQ: sendFAQ,
         SubscribeToNewsletter: subscribeToNewsletter,
-        GetFAQs: getFAQs
+        GetFAQs: getFAQs,
+        GetEvents: getEvents
     };
 }]);

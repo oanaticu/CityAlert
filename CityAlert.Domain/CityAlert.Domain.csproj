@@ -78,6 +78,9 @@
     <Compile Include="Models\Error.cs">
       <DependentUpon>CityAlert.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Event.cs">
+      <DependentUpon>CityAlert.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FAQ.cs">
       <DependentUpon>CityAlert.tt</DependentUpon>
     </Compile>
@@ -101,6 +104,7 @@
     <Compile Include="ViewModels\AddAlertResponse.cs" />
     <Compile Include="ViewModels\CaseModel.cs" />
     <Compile Include="ViewModels\Category.cs" />
+    <Compile Include="ViewModels\EventModel.cs" />
     <Compile Include="ViewModels\FAQModel.cs" />
     <Compile Include="ViewModels\IMultipartFormModel.cs" />
     <Compile Include="ViewModels\SendFAQModel.cs" />

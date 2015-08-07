@@ -60,6 +60,7 @@ angular.module('app')
     var sendFAQUrl = staticdata.ApiUrl + 'Contact/SendFAQ';
     var subscribeToNewsletterUrl = staticdata.ApiUrl + 'Contact/SubscribeToNewsletter';
     var getFAQUrl = staticdata.ApiUrl + 'Contact/GetFAQs';
+    var getEventsUrl = staticdata.ApiUrl + 'Contact/GetEvents';
     
     function sendFAQ(data) {
         var request = $http.post(sendFAQUrl, data);
@@ -78,11 +79,34 @@ angular.module('app')
 
             return (request.then(req.HandleSuccess, req.HandleError));
     }
+    
+    function getEvents() {
+        var request = $http.get(getEventsUrl);
+
+        return (request.then(req.HandleSuccess, req.HandleError));
+    }
 
     return {
         SendFAQ: sendFAQ,
         SubscribeToNewsletter: subscribeToNewsletter,
-        GetFAQs: getFAQs
+        GetFAQs: getFAQs,
+        GetEvents: getEvents
+    };
+}]);
+///#source 1 1 /services/aboutservice.js
+angular.module('app')
+.factory('aboutservice', ['$rootScope', '$http', '$q', 'staticdata', 'requestservice',
+    function ($rootScope, $http, $q, staticdata, req) {
+    var getEventsUrl = staticdata.ApiUrl + 'Contact/GetEvents';
+    
+    function getEvents() {
+        var request = $http.get(getEventsUrl);
+
+        return (request.then(req.HandleSuccess, req.HandleError));
+    }
+
+    return {
+        GetEvents: getEvents
     };
 }]);
 ///#source 1 1 /services/alertservice.js

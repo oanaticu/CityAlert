@@ -104,5 +104,23 @@ namespace CityAlertWS.Controllers
             return response;
         }
 
+
+        [ActionName("GetEvents")]
+        [HttpGet]
+        public IEnumerable<EventModel> GetEvents()
+        {
+            IEnumerable<EventModel> response = new List<EventModel>();
+
+            try
+            {
+                response = _contactQueries.GetEvents();
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogException("GetEvents", ex, null);
+            }
+
+            return response;
+        }
     }
 }

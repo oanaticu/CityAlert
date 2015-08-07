@@ -12,6 +12,7 @@
   <files>
     <file>/services/accountservice.js</file>
     <file>/services/contactservice.js</file>
+    <file>/services/aboutservice.js</file>
     <file>/services/alertservice.js</file>
     <file>/services/layoutservice.js</file>
     <file>/services/requestservice.js</file>

@@ -37,22 +37,24 @@
 
             // gmaps actions
             $scope.$on('mapInitialized', function (event, map) {
-                $geolocation.getCurrentPosition().then(function (position) {
-                    
-                    $scope.newAlert.lat = $scope.newAlert.userLat = position.coords.latitude;
-                    $scope.newAlert.long = $scope.newAlert.userLong = position.coords.longitude;
-
-                    var location = new google.maps.LatLng($scope.newAlert.lat, $scope.newAlert.long);
-                    $scope.marker = new google.maps.Marker({
-                        position: location,
-                        map: map
-                    });
-                    setAddress(location);
-                    map.setCenter(location);
-
-                });
-
+                
                 if (map.id == "mNewAlert") {
+                    $geolocation.getCurrentPosition().then(function (position) {
+
+                        $scope.newAlert.lat = $scope.newAlert.userLat = position.coords.latitude;
+                        $scope.newAlert.long = $scope.newAlert.userLong = position.coords.longitude;
+
+                        var location = new google.maps.LatLng($scope.newAlert.lat, $scope.newAlert.long);
+                        $scope.marker = new google.maps.Marker({
+                            position: location,
+                            map: map
+                        });
+                        setAddress(location);
+                        map.setCenter(location);
+
+
+                    });
+
                     google.maps.event.addListener(map, 'click', function (event) {
                         placeMarker(event.latLng);
                         setAddress(event.latLng);
@@ -64,14 +66,14 @@
 
             });
             function placeMarkers() {
+                debugger;
                 for (var i = 0; i < $scope.alertMarkers.length; i++) {
                     $scope.alertMarkers[i].setMap(null);
                 }
                 $scope.alertMarkers = [];
 
                 $scope.alertMarkers = _.map($scope.alerts, function (elem) {
-                    
-                        return new google.maps.Marker({
+                    return new google.maps.Marker({
                             position: new google.maps.LatLng(elem.Lat, elem.Long),
                             map: $scope.maps.mAlert
                         });
@@ -79,7 +81,6 @@
 
             }
             function placeMarker(location) {
-
                 if ($scope.marker == undefined) {
                     $scope.marker = new google.maps.Marker({
                         position: location,
